@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Billett</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Bestilling av kinobillett</h1>
+            <form class="form">
+                <div class="form-group">
+                    Film
+                    <select id="film">
+                        <option selected disabled>Velg film her</option>
+                        <option value="Grusomme Meg">Grusomme Meg</option>
+                        <option value="Shrek">Shrek</option>
+                        <option value="Sinister">Sinister</option>
+                    </select>
+                    <span id="validerFilm" style="display: none;">Vennligst velg en film</span>
+                </div>
+                <div class="form-group">
+                    Antall
+                    <input type="number" id="antall" min="1">
+                    <span id="validerAntall" style="display: none;">Vennligst fyll ut antall fra 0 til 50</span>
+                </div>
+                <div class="form-group" >
+                    <label>Fornavn</label>
+                    <input type="text" id="fornavn" style="color: red">
+                    <span id="validerFornavn" style="display: none;">Vennligst skriv inn fornavn</span>
+                </div>
+                <div class="form-group">
+                    <label>Etternavn </label>
+                    <input type="text" id="etternavn">
+                    <span id="validerEtternavn" style="display: none;">Vennligst skriv inn etternavn</span>
+                </div>
+                <div class="form-group">
+                    TelefonNr
+                    <input type="text" id="telefon">
+                    <span id="validerTelefon" style="display: none;">Vennligst skriv et telefonnummer</span>
+                </div>
+                <div class="form-group">
+                    Epost
+                    <input type="email" id="email">
+                    <span id="validerEmail" style="display: none;">Vennligst skriv inn email med alfakrøll og punktum</span>
+                </div>
+            </form>
+
+            <button id="Betal" class="btn btn-primary" onclick="validerOgRegKunde()">Betal</button>
+
+            <div class="col-md-8">
+                <h2>Bestilte billetter:</h2>
+                <div id="kundene"></div>
+                <button onclick="slettKundene()">Slett alle bestillinger</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
