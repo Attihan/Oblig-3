@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public class KundeRep {
     @Autowired
+
     private JdbcTemplate db;
 
     public void lagreKunde (Kunde innkunde) {

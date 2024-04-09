@@ -28,28 +28,29 @@ function hentAlle() {
 
 function formaterData(kunder){
     let ut = "<table><tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>Email</th></tr>";
-    for (const kunde of kunder){
+    for (let kunde of kunder){
         ut+="<tr><td>"+kunde.film+"</td>" +
             "<td>"+kunde.antall+"</td>" +
             "<td>"+kunde.fornavn+"</td>" +
             "<td>"+kunde.etternavn+"</td>" +
             "<td>"+kunde.telefon+"</td>" +
             "<td>"+kunde.email+"</td>"+
-            "<td> <a class='btn btn-primary' href='endreKunde.html?id="+kunder.id+"'>Endre</a></td>"+
-            "<td> <button class='btn btn-danger' onclick='slettEnKunde("+kunder.id+")'>Slett</button></td>"+
-            "</tr>";
+            "<td> <a class='btn btn-primary' href='endreKunde.html?id="+kunde.id+"'>Endre</a></td>"+
+            "<td> <button class='btn btn-danger' onclick='slettEnKunde("+kunde.id+")'>Slett</button></td>"+
+            "</tr>"
     }
 
     ut+="</table>";
     $("#kundene").html(ut);
 }
 
+
 function slettEnKunde(id) {
     const url = "/slettEnKunde?id="+id;
     $.get( url, function() {
-        window.location.href = '/';
+        window.location.href = "/";
     });
-};
+}
 
 function slettKundene() {
     $.get( "/slettAlle", function() {
