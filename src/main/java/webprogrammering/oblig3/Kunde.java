@@ -2,14 +2,18 @@ package webprogrammering.oblig3;
 
 
         public class Kunde {
+        private int id;
         private String film;
         private String antall;
         private String fornavn;
         private String etternavn;
         private String telefon;
         private String email;
+                public Kunde() {
+                }
 
-        public Kunde(String film, String antall, String fornavn, String etternavn, String telefon, String email) {
+        public Kunde(int id, String film, String antall, String fornavn, String etternavn, String telefon, String email) {
+        this.id = id;
         this.film = film;
         this.antall = antall;
         this.fornavn = fornavn;
@@ -18,8 +22,14 @@ package webprogrammering.oblig3;
         this.email = email;
         }
 
-        public Kunde() {
+
+
+        public int getId() {
+                return id;
         }
+                public void setId(int id) {
+                        this.id = id;
+                }
 
         public String getFilm() {
         return film;
@@ -68,3 +78,5 @@ package webprogrammering.oblig3;
         this.email = email;
         }
         }
+
+

@@ -3,7 +3,7 @@ $(function(){
     const id = window.location.search.substring(1);
     const url = "/hentEnKunde?"+id;
     $.get(url,function(kunde){
-        $("#id").val(kunde.id); // må ha med id inn skjemaet, hidden i html
+        $("#id").val(kunde.id);
         $("#film").val(kunde.film);
         $("#antall").val(kunde.antall);
         $("#fornavn").val(kunde.fornavn);
@@ -15,16 +15,16 @@ $(function(){
 
 function endreKunden() {
     const kunde = {
-        id : $("#id").val(), // må ha med denne som ikke har blitt endret for å vite hvilken kunde som skal endres
+        id : $("#id").val(),
         film : $("#film").val(),
         antall : $("#antall").val(),
         fornavn : $("#fornavn").val(),
         etternavn : $("#etternavn").val(),
         telefon : $("#telefon").val(),
         email : $("#email").val()
-
     }
+
     $.post("/endreEnKunde",kunde,function(){
-        window.location.href = 'index.html';
+        window.location.href = '/';
     });
 }

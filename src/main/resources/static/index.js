@@ -1,3 +1,7 @@
+
+$(function () {
+    hentAlle();
+});
 function regKunde() {
     const kunde = {
         film : $("#film").val(),
@@ -27,17 +31,18 @@ function hentAlle() {
 }
 
 function formaterData(kunder){
-    let ut = "<table><tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>Email</th></tr>";
-    for (let kunde of kunder){
-        ut+="<tr><td>"+kunde.film+"</td>" +
-            "<td>"+kunde.antall+"</td>" +
-            "<td>"+kunde.fornavn+"</td>" +
-            "<td>"+kunde.etternavn+"</td>" +
-            "<td>"+kunde.telefon+"</td>" +
-            "<td>"+kunde.email+"</td>"+
-            "<td> <a class='btn btn-primary' href='endreKunde.html?id="+kunde.id+"'>Endre</a></td>"+
-            "<td> <button class='btn btn-danger' onclick='slettEnKunde("+kunde.id+")'>Slett</button></td>"+
-            "</tr>"
+    var ut = "<table class='table'><tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>Email</th></tr>";
+    for (let i in kunder) {
+        ut += "<tr>" +
+            "<td>" + kunder[i].film + "</td>" +
+            "<td>" + kunder[i].antall + "</td>" +
+            "<td>" + kunder[i].fornavn + "</td>" +
+            "<td>" + kunder[i].etternavn + "</td>" +
+            "<td>" + kunder[i].telefon + "</td>" +
+            "<td>" + kunder[i].email + "</td>" +
+            "<td> <a class='btn btn-primary' href='endreKunde.html?id=" + kunder[i].id + "'>Endre</a></td>" +
+            "<td> <button class='btn btn-danger' onclick='slettEnKunde("+kunder[i].id+")'>Slett</button></td>"+
+            "</tr>";
     }
 
     ut+="</table>";
@@ -45,10 +50,12 @@ function formaterData(kunder){
 }
 
 
+
 function slettEnKunde(id) {
+    console.log("gjort")
     const url = "/slettEnKunde?id="+id;
     $.get( url, function() {
-        window.location.href = "/";
+        window.location.href = 'index.html';
     });
 }
 
@@ -62,80 +69,91 @@ function filmValgt() {
     alert("Filmen valgt : " + document.getElementById("film").value);
 }
 
-function validering(){
 
-    const film = $("#film");
-    const antall = $("#antall");
-    const fornavn = $("#fornavn");
-    const etternavn = $("#etternavn");
-    const telefon = $("#telefon");
-    const email = $("#email");
-
-    const validerFilm = $("#validerFilm");
-    const validerAntall = $("#validerAntall");
-    const validerFornavn = $("#validerFornavn")
-    const validerEtternavn = $("#validerEtternavn")
-    const validerTelefon = $("#validerTelefon")
-    const validerEmail = $("#validerEmail")
-
-    let feil = false;
-
-
-    if ($("#film").val() === null) {
-        $("#validerFilm").css("display", "inline");
-        feil = true;
+function validerFilm(film){
+    if (film === null || film === "" || film === "Velg film her"){
+        $("#feilFilm").html("Vennligst velg en film").show();
+        return false;
     } else {
-        $("#validerFilm").css("display", "none");
+        // Hvis antallet er gyldig, skjul eventuelle feilmeldinger
+        $("#feilFilm").html("").hide();
+        return true;
+    }
+}
+function validerAntall(antall) {
+
+
+    if (antall < 1 || antall > 50) {
+        $("#feilAntall").html("Vennligst fyll ut antall fra 1 til 50").show();
+        return false;
+    } else {
+        $("#feilAntall").html("").hide();
+        return true;
     }
 
-    if (antall.val() < 0 || antall.val() > 50 || antall.val() === '') {
-        console.log("Aktivert");
-        validerAntall.css("display", "inline");
-        feil = true;
+}
+function validerFornavn(fornavn) {
+    const regexp = /^[a-zA-ZæøåÆØÅ. \-]{2,20}$/;
+    const ok = regexp.test(fornavn);
+    if (!ok) {
+        $("#feilFornavn").html("Fornavnet må bestå av 2 til 20 bokstaver");
+        return false;
     } else {
-        console.log("Deaktivert");
-        validerAntall.css("display", "none");
+        $("#feilFornavn").html("");
+        return true;
     }
+}
 
-    if ($("#fornavn").val() === "") {
-        $("#validerFornavn").css("display", "inline");
-        feil = true;
+function validerEtternavn(etternavn) {
+    const regexp = /^[a-zA-ZæøåÆØÅ. \-]{2,20}$/;
+    const ok = regexp.test(etternavn);
+    if (!ok) {
+        $("#feilEtternavn").html("Etternavnet må bestå av 2 til 20 bokstaver");
+        return false;
     } else {
-        $("#validerFornavn").css("display", "none");
+        $("#feilEtternavn").html("");
+        return true;
     }
+}
 
-    if ($("#etternavn").val() === "") {
-        $("#validerEtternavn").css("display", "inline");
-        feil = true;
+function validerTelefon() {
+    const telefon = $("#telefon").val();
+    const regexp = /^\d+$/;
+    const ok = regexp.test(telefon);
+    if (!ok) {
+        $("#feilTelefon").html("Telefonnummer må bestå av tall");
+        return false;
     } else {
-        $("#validerEtternavn").css("display", "none");
+        $("#feilTelefon").html("");
+        return true;
     }
+}
 
-    if (isNaN(parseInt($("#telefon").val())) || $("#telefon").val() === "") {
-        $("#validerTelefon").css("display", "inline");
-        feil = true;
+function validerEmail() {
+    const email = $("#email").val();
+    const regexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const ok = regexp.test(email);
+    if (!ok) {
+        $("#feilEmail").html("Vennligst oppgi en gyldig e-postadresse");
+        return false;
     } else {
-        $("#validerTelefon").css("display", "none");
+        $("#feilEmail").html("");
+        return true;
     }
-
-    if ($("#email").val() === "" || !/^.+@.+\..+$/.test($("#email").val())) {
-        $("#validerEmail").css("display", "inline");
-        feil = true;
-    } else {
-        $("#validerEmail").css("display", "none");
-    }
-
-
-
-    return !feil; //Dette returnerer variabelen feil som true
 }
 
 function validerOgRegKunde() {
-    if (validering()) {
+    const filmOK = validerFilm($("#film").val());
+    const antallOK = validerAntall($("#antall").val());
+    const fornavnOK = validerFornavn($("#fornavn").val());
+    const etternavnOK = validerEtternavn($("#etternavn").val());
+    const telefonOK = validerTelefon($("#telefon").val());
+    const emailOK = validerEmail($("#email").val());
+    if (filmOK && antallOK && fornavnOK && etternavnOK && telefonOK && emailOK) {
         regKunde();
-    } else {
-        console.log("Validering mislyktes. Kunderegistreringen ble ikke utført.");
     }
 }
+
+
 
 

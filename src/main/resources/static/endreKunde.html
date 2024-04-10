@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="no">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <title>Et skjema</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
-    <title>Billett</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="endreKunde.js"></script>
+    <script src="index.js"></script>
 </head>
 <body>
 
@@ -16,42 +17,38 @@
             <form class="form">
                 <input type="hidden" id="id"/>
                 <div class="form-group">
-                    Film
+                    <label>Film</label>
                     <select id="film">
                         <option selected disabled>Velg film her</option>
                         <option value="Grusomme Meg">Grusomme Meg</option>
                         <option value="Shrek">Shrek</option>
                         <option value="Sinister">Sinister</option>
                     </select>
-                    <span id="validerFilm" style="display: none;">Vennligst velg en film</span>
                 </div>
                 <div class="form-group">
-                    Antall
-                    <input type="number" id="antall" min="1">
-                    <span id="validerAntall" style="display: none;">Vennligst fyll ut antall fra 0 til 50</span>
+                    <label>Antall</label>
+                    <input type="number" id="antall" min="1" value="0">
                 </div>
-                <div class="form-group">
+                <div class="form-group" >
                     <label>Fornavn</label>
-                    <input type="text" id="fornavn">
-                    <span id="validerFornavn" style="display: none;">Vennligst skriv inn fornavn</span>
+                    <input  type="text" id="fornavn">
                 </div>
                 <div class="form-group">
                     <label>Etternavn </label>
-                    <input type="text" id="etternavn">
-                    <span id="validerEtternavn" style="display: none;">Vennligst skriv inn etternavn</span>
+                    <input  type="text" id="etternavn">
                 </div>
                 <div class="form-group">
-                    TelefonNr
-                    <input type="text" id="telefon">
-                    <span id="validerTelefon" style="display: none;">Vennligst skriv et telefonnummer</span>
+                    <label>TelefonNr</label>
+                    <input type="tel" id="telefon">
                 </div>
                 <div class="form-group">
-                    Epost
+                    <label>Epost</label>
                     <input type="email" id="email">
-                    <span id="validerEmail" style="display: none;">Vennligst skriv inn email med alfakrøll og punktum</span>
                 </div>
             </form>
-            <button type ="button" id="Endre" class="btn btn-primary" onclick="endreKunden()">Endre</button>
+            <div class="form-group">
+                <input type="button" value="Endre" class="btn btn-primary" onclick="endreKunden()"/>
+            </div>
         </div>
     </div>
 </div>

@@ -15,17 +15,27 @@ public class BilettController {
     private KundeRep rep;
 
     @PostMapping("/lagre")
-    public void lagreKunde(Kunde innKunde){
+    public void lagreKunde(Kunde innKunde) {
         rep.lagreKunde(innKunde);
     }
 
     @GetMapping("/hentAlle")
-    public List<Kunde> hentAlle(){
+    public List<Kunde> hentAlle() {
         return rep.hentAlleKunder();
     }
 
     @GetMapping("/slettAlle")
-    public void slettAlle(){
+    public void slettAlle() {
         rep.slettAlleKunder();
+    }
+
+    @PostMapping("/endreEnKunde")
+    public void endreEnKunde(Kunde kunde) {
+        rep.endreEnKunde(kunde);
+    }
+
+    @GetMapping("/slettEnKunde")
+    public void slettEnKunde(int id) {
+        rep.slettEnKunde(id);
     }
 }

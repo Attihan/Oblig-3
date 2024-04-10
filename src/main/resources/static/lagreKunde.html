@@ -6,45 +6,46 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="lagreKunde.js"></script>
+    <script src="index.js"></script>
 </head>
 <body>
 <h1>Lagre kunde</h1>
 <form class="form">
     <input type="hidden" id="id"/>
     <div class="form-group">
-        Film
-        <select id="film">
+        <label>Film</label>
+        <select id="film" onchange="validerFilm()">
             <option selected disabled>Velg film her</option>
             <option value="Grusomme Meg">Grusomme Meg</option>
             <option value="Shrek">Shrek</option>
             <option value="Sinister">Sinister</option>
         </select>
-        <span id="validerFilm" style="display: none;">Vennligst velg en film</span>
+        <span id="feilFilm" style="color:red"></span>
     </div>
     <div class="form-group">
-        Antall
-        <input type="number" id="antall" min="1">
-        <span id="validerAntall" style="display: none;">Vennligst fyll ut antall fra 0 til 50</span>
+        <label>Antall</label>
+        <input onchange="validerAntall()" type="number" id="antall" min="1" value="1">
+        <span id="feilAntall" style="color:red"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" >
         <label>Fornavn</label>
-        <input type="text" id="fornavn">
-        <span id="validerFornavn" style="display: none;">Vennligst skriv inn fornavn</span>
+        <input onchange="validerFornavn()" type="text" id="fornavn">
+        <span id="feilFornavn" style="color:red"></span>
     </div>
     <div class="form-group">
         <label>Etternavn </label>
-        <input type="text" id="etternavn">
-        <span id="validerEtternavn" style="display: none;">Vennligst skriv inn etternavn</span>
+        <input onchange="validerEtternavn()" type="text" id="etternavn">
+        <span id="feilEtternavn" style="color:red"></span>
     </div>
     <div class="form-group">
-        TelefonNr
-        <input type="text" id="telefon">
-        <span id="validerTelefon" style="display: none;">Vennligst skriv et telefonnummer</span>
+        <label>TelefonNr</label>
+        <input onchange="validerTelefon()" type="tel" id="telefon">
+        <span id="feilTelefon" style="color:red"></span>
     </div>
     <div class="form-group">
-        Epost
-        <input type="email" id="email">
-        <span id="validerEmail" style="display: none;">Vennligst skriv inn email med alfakrøll og punktum</span>
+        <label>Epost</label>
+        <input onchange="validerEmail()" type="email" id="email">
+        <span id="feilEmail" style="color:red"></span>
     </div>
 </form>
 </body>
