@@ -154,6 +154,17 @@ function validerOgRegKunde() {
     }
 }
 
+function validerOgEndrekunde() {
+    const filmOK = validerFilm($("#film").val());
+    const antallOK = validerAntall($("#antall").val());
+    const fornavnOK = validerFornavn($("#fornavn").val());
+    const etternavnOK = validerEtternavn($("#etternavn").val());
+    const telefonOK = validerTelefon($("#telefon").val());
+    const emailOK = validerEmail($("#email").val());
+    if (filmOK && antallOK && fornavnOK && etternavnOK && telefonOK && emailOK) {
+        endreKunden();
+    }
+}
 
 
 

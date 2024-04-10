@@ -18,36 +18,42 @@
                 <input type="hidden" id="id"/>
                 <div class="form-group">
                     <label>Film</label>
-                    <select id="film">
+                    <select id="film" onchange="validerFilm()">
                         <option selected disabled>Velg film her</option>
                         <option value="Grusomme Meg">Grusomme Meg</option>
                         <option value="Shrek">Shrek</option>
                         <option value="Sinister">Sinister</option>
                     </select>
+                    <span id="feilFilm" style="color:red"></span>
                 </div>
                 <div class="form-group">
                     <label>Antall</label>
-                    <input type="number" id="antall" min="1" value="0">
+                    <input onchange="validerAntall()" type="number" id="antall" min="1" value="0">
+                    <span id="feilAntall" style="color:red"></span>
                 </div>
                 <div class="form-group" >
                     <label>Fornavn</label>
-                    <input  type="text" id="fornavn">
+                    <input onchange="validerFornavn()" type="text" id="fornavn">
+                    <span id="feilFornavn" style="color:red"></span>
                 </div>
                 <div class="form-group">
                     <label>Etternavn </label>
-                    <input  type="text" id="etternavn">
+                    <input onchange="validerEtternavn()" type="text" id="etternavn">
+                    <span id="feilEtternavn" style="color:red"></span>
                 </div>
                 <div class="form-group">
                     <label>TelefonNr</label>
-                    <input type="tel" id="telefon">
+                    <input onchange="validerTelefon()" type="tel" id="telefon">
+                    <span id="feilTelefon" style="color:red"></span>
                 </div>
                 <div class="form-group">
                     <label>Epost</label>
-                    <input type="email" id="email">
+                    <input onchange="validerEmail()" type="email" id="email">
+                    <span id="feilEmail" style="color:red"></span>
                 </div>
             </form>
             <div class="form-group">
-                <input type="button" value="Endre" class="btn btn-primary" onclick="endreKunden()"/>
+                <input type="button" value="Endre" class="btn btn-primary" onclick="validerOgEndrekunde()"/>
             </div>
         </div>
     </div>

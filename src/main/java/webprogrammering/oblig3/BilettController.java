@@ -29,6 +29,10 @@ public class BilettController {
         rep.slettAlleKunder();
     }
 
+    @GetMapping("/hentEnKunde")
+    public Kunde hentEnKunde(int id){
+        return rep.hentEnKunde(id);
+    }
     @PostMapping("/endreEnKunde")
     public void endreEnKunde(Kunde kunde) {
         rep.endreEnKunde(kunde);
