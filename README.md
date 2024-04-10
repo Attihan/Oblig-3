@@ -6,6 +6,8 @@ GitHub brukernavn: Attihan
 
 GitHub repo URL: https://github.com/Attihan/oblig-2-Attihan.git
 
+YouTube LINK: https://youtu.be/R9SxVpseQn4?si=hOFOBH-wN_qQ3LDn
+
 Fullt navn: Atilla Nikolai Reyhanli
 
 Kort beskrivelse av applikasjon (5-10 setninger):
